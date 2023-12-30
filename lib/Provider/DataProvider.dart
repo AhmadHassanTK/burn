@@ -47,7 +47,7 @@ class DataProvider with ChangeNotifier {
     int change = await changes();
     if (amount - change >= 250) {
       amount -= change;
-    } else {
+    } else if (amount - change < 250) {
       amount = 250;
     }
     await cloudServices.updateInDatabase(id: 'amount', data: amount);
